@@ -1,0 +1,102 @@
+.attendance-page {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.attendance-toolbar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.month-picker {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+.month-picker:focus {
+  outline: none;
+  border-color: #1e3a8a;
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+.attendance-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.attendance-table thead {
+  background: #f8fafc;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.attendance-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.875rem;
+}
+
+.attendance-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #64748b;
+}
+
+.attendance-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-present {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-absent {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-leave {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.no-data {
+  text-align: center;
+  color: #94a3b8;
+  padding: 2rem !important;
+}
+
+@media (max-width: 768px) {
+  .attendance-table {
+    font-size: 0.875rem;
+  }
+
+  .attendance-table th,
+  .attendance-table td {
+    padding: 0.75rem;
+  }
+}

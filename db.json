@@ -1,0 +1,203 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "name": "Admin User",
+      "role": "ceo",
+      "departmentId": null
+    },
+    {
+      "id": 2,
+      "name": "John Doe",
+      "email": "john.doe@company.com",
+      "password": "john123",
+      "role": "manager",
+      "departmentId": 1
+    },
+    {
+      "id": 3,
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@company.com",
+      "password": "sarah123",
+      "role": "manager",
+      "departmentId": 2
+    },
+    {
+      "id": 4,
+      "name": "Mike Smith",
+      "email": "mike.smith@company.com",
+      "password": "mike123",
+      "role": "manager",
+      "departmentId": 3
+    },
+    {
+      "id": 5,
+      "name": "David Wilson",
+      "email": "david.wilson@company.com",
+      "password": "david123",
+      "role": "manager",
+      "departmentId": 4
+    },
+    {
+      "id": 6,
+      "name": "Emily Brown",
+      "email": "emily.brown@company.com",
+      "password": "emily123",
+      "role": "employee",
+      "departmentId": 1
+    },
+    {
+      "id": 7,
+      "name": "anu kumari",
+      "email": "anukr@gmail.com",
+      "password": "anu123",
+      "role": "employee",
+      "departmentId": 1,
+      "createdAt": "2026-05-19T09:21:07.641Z"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@company.com",
+      "phone": "9876543210",
+      "gender": "Male",
+      "department": "IT",
+      "designation": "Senior Developer",
+      "salary": 120000,
+      "joiningDate": "2022-01-15",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@company.com",
+      "phone": "9876543211",
+      "gender": "Female",
+      "department": "HR",
+      "designation": "HR Manager",
+      "salary": 85000,
+      "joiningDate": "2021-06-20",
+      "status": "Active"
+    },
+    {
+      "id": 3,
+      "name": "Mike Smith",
+      "email": "mike.smith@company.com",
+      "phone": "9876543212",
+      "gender": "Male",
+      "department": "Finance",
+      "designation": "Finance Lead",
+      "salary": 95000,
+      "joiningDate": "2020-11-10",
+      "status": "Active"
+    },
+    {
+      "id": 4,
+      "name": "Emily Brown",
+      "email": "emily.brown@company.com",
+      "phone": "9876543213",
+      "gender": "Female",
+      "department": "IT",
+      "designation": "Junior Developer",
+      "salary": 65000,
+      "joiningDate": "2023-03-05",
+      "status": "Active"
+    },
+    {
+      "id": 5,
+      "name": "David Wilson",
+      "email": "david.wilson@company.com",
+      "phone": "9876543214",
+      "gender": "Male",
+      "department": "Marketing",
+      "designation": "Marketing Manager",
+      "salary": 75000,
+      "joiningDate": "2022-08-12",
+      "status": "Inactive"
+    }
+  ],
+  "departments": [
+    {
+      "id": 1,
+      "name": "IT",
+      "manager": "John Doe",
+      "totalEmployees": 5
+    },
+    {
+      "id": 2,
+      "name": "HR",
+      "manager": "Sarah Johnson",
+      "totalEmployees": 3
+    },
+    {
+      "id": 3,
+      "name": "Finance",
+      "manager": "Mike Smith",
+      "totalEmployees": 4
+    },
+    {
+      "id": 4,
+      "name": "Marketing",
+      "manager": "David Wilson",
+      "totalEmployees": 2
+    }
+  ],
+  "attendance": [
+    {
+      "id": 1,
+      "employeeId": 1,
+      "date": "2024-01-15",
+      "status": "Present"
+    },
+    {
+      "id": 2,
+      "employeeId": 1,
+      "date": "2024-01-16",
+      "status": "Present"
+    },
+    {
+      "id": 3,
+      "employeeId": 2,
+      "date": "2024-01-15",
+      "status": "Absent"
+    },
+    {
+      "id": 4,
+      "employeeId": 2,
+      "date": "2024-01-16",
+      "status": "Leave"
+    }
+  ],
+  "leaveRequests": [
+    {
+      "id": 1,
+      "employeeId": 6,
+      "employeeName": "Emily Brown",
+      "startDate": "2026-05-25",
+      "endDate": "2026-05-27",
+      "reason": "Personal work",
+      "leaveType": "Casual Leave",
+      "status": "rejected",
+      "createdAt": "2026-05-19T10:00:00.000Z",
+      "approvedBy": "Admin User",
+      "approvedAt": "2026-05-19T15:40:10.408Z"
+    },
+    {
+      "employeeId": 7,
+      "employeeName": "anu kumari",
+      "startDate": "2026-05-20",
+      "endDate": "2026-05-20",
+      "leaveType": "Sick Leave",
+      "reason": "not feeling well!!",
+      "status": "approved",
+      "createdAt": "2026-05-19T15:39:36.022Z",
+      "approvedBy": "Admin User",
+      "approvedAt": "2026-05-19T15:40:03.452Z",
+      "id": 2
+    }
+  ]
+}
