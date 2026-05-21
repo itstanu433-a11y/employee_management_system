@@ -1,19 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { validateRequired, validateName } from '../utils/validators';
+import { employeeService } from '../services/apiService';
 import '../styles/components.css';
 
 const DepartmentForm = ({ onClose, onSubmit }) => {
   const [formData, setFormData] = useState({
     name: '',
-    manager: '',
-    totalEmployees: 0,
+    managerId: '',
+    description: '',
   });
 
+  const [employees, setEmployees] = useState([]);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const loadEmployees = async () => {
+      try {
+        const response = await employeeService.getAllEmployees();
+        setEmployees(response.data);
+      } catch (error) {
+        console.error('Error loading employees:', error);
+      }
+    };
+    loadEmployees();
+  }, []);
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name) newErrors.name = 'Department name is required';
-    if (!formData.manager) newErrors.manager = 'Manager name is required';
+    
+    if (!validateRequired(formData.name)) {
+      newErrors.name = 'Department name is required';
+    } else if (!validateName(formData.name)) {
+      newErrors.name = 'Department name can only contain letters and spaces';
+    }
+    
+    if (!validateRequired(formData.managerId)) {
+      newErrors.managerId = 'Manager is required';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -52,26 +75,30 @@ const DepartmentForm = ({ onClose, onSubmit }) => {
           </div>
 
           <div className="form-group">
-            <label>Manager Name *</label>
-            <input
-              type="text"
-              name="manager"
-              value={formData.manager}
+            <label>Manager *</label>
+            <select
+              name="managerId"
+              value={formData.managerId}
               onChange={handleChange}
-              placeholder="Enter manager name"
-            />
-            {errors.manager && <span className="error">{errors.manager}</span>}
+            >
+              <option value="">Select a manager</option>
+              {employees.map((emp) => (
+                <option key={emp.id} value={emp.id}>
+                  {emp.name}
+                </option>
+              ))}
+            </select>
+            {errors.managerId && <span className="error">{errors.managerId}</span>}
           </div>
 
           <div className="form-group">
-            <label>Total Employees</label>
-            <input
-              type="number"
-              name="totalEmployees"
-              value={formData.totalEmployees}
+            <label>Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
               onChange={handleChange}
-              placeholder="Enter total employees"
-              min="0"
+              placeholder="Enter department description"
+              rows="3"
             />
           </div>
 

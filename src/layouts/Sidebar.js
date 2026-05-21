@@ -16,6 +16,10 @@ const Sidebar = () => {
     { label: 'Attendance', path: '/attendance', icon: '📅', roles: ['ceo', 'manager', 'employee'] },
     { label: 'My Leaves', path: '/leaves', icon: '🏖️', roles: ['ceo', 'manager', 'employee'] },
     { label: 'Approve Leaves', path: '/leave-management', icon: '✅', roles: ['ceo', 'manager'] },
+    { label: 'Feedback', path: '/feedback', icon: '💬', roles: ['ceo', 'manager', 'employee'] },
+    { label: 'Holidays', path: '/holidays', icon: '🎉', roles: ['ceo', 'manager', 'employee'] },
+    { label: 'Performance Review', path: '/performance-review', icon: '⭐', roles: ['ceo', 'manager'] },
+    { label: 'Transfer Employee', path: '/employee-transfer', icon: '↔️', roles: ['ceo', 'manager'] },
   ];
 
   // Filter menu items based on user role

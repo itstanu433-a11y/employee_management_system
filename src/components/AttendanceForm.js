@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { validateRequired, validateDate } from '../utils/validators';
 import '../styles/components.css';
 
 const AttendanceForm = ({ employees, onClose, onSubmit }) => {
@@ -12,9 +13,20 @@ const AttendanceForm = ({ employees, onClose, onSubmit }) => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.employeeId) newErrors.employeeId = 'Employee is required';
-    if (!formData.date) newErrors.date = 'Date is required';
-    if (!formData.status) newErrors.status = 'Status is required';
+    
+    if (!validateRequired(formData.employeeId)) {
+      newErrors.employeeId = 'Employee is required';
+    }
+    
+    if (!validateRequired(formData.date)) {
+      newErrors.date = 'Date is required';
+    } else if (!validateDate(formData.date)) {
+      newErrors.date = 'Future dates are not allowed';
+    }
+    
+    if (!validateRequired(formData.status)) {
+      newErrors.status = 'Status is required';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -66,6 +78,7 @@ const AttendanceForm = ({ employees, onClose, onSubmit }) => {
               name="date"
               value={formData.date}
               onChange={handleChange}
+              max={new Date().toISOString().split('T')[0]}
             />
             {errors.date && <span className="error">{errors.date}</span>}
           </div>

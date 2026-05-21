@@ -1,4 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import {
+  validateEmail,
+  validatePhone,
+  validateRequired,
+  validateName,
+  validateSalary,
+  validateDate,
+} from '../utils/validators';
 import '../styles/components.css';
 
 const EmployeeForm = ({ departments, onClose, onSubmit }) => {
@@ -18,16 +26,44 @@ const EmployeeForm = ({ departments, onClose, onSubmit }) => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name) newErrors.name = 'Name is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.phone) newErrors.phone = 'Phone is required';
-    if (!/^[0-9]{10}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone must be 10 digits';
+    
+    if (!validateRequired(formData.name)) {
+      newErrors.name = 'Name is required';
+    } else if (!validateName(formData.name)) {
+      newErrors.name = 'Name can only contain letters and spaces';
     }
-    if (!formData.department) newErrors.department = 'Department is required';
-    if (!formData.designation) newErrors.designation = 'Designation is required';
-    if (!formData.salary) newErrors.salary = 'Salary is required';
-    if (!formData.joiningDate) newErrors.joiningDate = 'Joining date is required';
+    
+    if (!validateRequired(formData.email)) {
+      newErrors.email = 'Email is required';
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Enter a valid email address';
+    }
+    
+    if (!validateRequired(formData.phone)) {
+      newErrors.phone = 'Phone is required';
+    } else if (!validatePhone(formData.phone)) {
+      newErrors.phone = 'Phone must be a valid 10-digit number';
+    }
+    
+    if (!validateRequired(formData.department)) {
+      newErrors.department = 'Department is required';
+    }
+    
+    if (!validateRequired(formData.designation)) {
+      newErrors.designation = 'Designation is required';
+    }
+    
+    if (!validateRequired(formData.salary)) {
+      newErrors.salary = 'Salary is required';
+    } else if (!validateSalary(formData.salary)) {
+      newErrors.salary = 'Salary must be a positive number';
+    }
+    
+    if (!validateRequired(formData.joiningDate)) {
+      newErrors.joiningDate = 'Joining date is required';
+    } else if (!validateDate(formData.joiningDate)) {
+      newErrors.joiningDate = 'Joining date cannot be in the future';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;

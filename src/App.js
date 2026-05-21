@@ -11,6 +11,11 @@ import Departments from './pages/Departments';
 import Attendance from './pages/Attendance';
 import Leaves from './pages/Leaves';
 import LeaveManagement from './pages/LeaveManagement';
+import Feedback from './pages/Feedback';
+import EmployeeProfile from './pages/EmployeeProfile';
+import HolidayCalendar from './pages/HolidayCalendar';
+import PerformanceReview from './pages/PerformanceReview';
+import EmployeeTransfer from './pages/EmployeeTransfer';
 import './App.css';
 
 function App() {
@@ -80,6 +85,56 @@ function App() {
               <ProtectedRoute allowedRoles={['manager', 'ceo']}>
                 <MainLayout>
                   <LeaveManagement />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/feedback"
+            element={
+              <ProtectedRoute allowedRoles={['employee', 'manager', 'ceo']}>
+                <MainLayout>
+                  <Feedback />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employee/:id"
+            element={
+              <ProtectedRoute>
+                <MainLayout>
+                  <EmployeeProfile />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/holidays"
+            element={
+              <ProtectedRoute>
+                <MainLayout>
+                  <HolidayCalendar />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/performance-review"
+            element={
+              <ProtectedRoute allowedRoles={['manager', 'ceo']}>
+                <MainLayout>
+                  <PerformanceReview />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employee-transfer"
+            element={
+              <ProtectedRoute allowedRoles={['manager', 'ceo']}>
+                <MainLayout>
+                  <EmployeeTransfer />
                 </MainLayout>
               </ProtectedRoute>
             }

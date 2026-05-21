@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/components.css';
 import { formatDate } from '../utils/helpers';
 
 const EmployeeTable = ({ employees, loading, userRole, canEdit, canDelete, onEdit, onDelete }) => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -40,7 +42,13 @@ const EmployeeTable = ({ employees, loading, userRole, canEdit, canDelete, onEdi
                   <tr key={emp.id}>
                     <td>#{emp.id}</td>
                     <td>
-                      <strong>{emp.name}</strong>
+                      <strong 
+                        style={{ cursor: 'pointer', color: '#667eea' }}
+                        onClick={() => navigate(`/employee/${emp.id}`)}
+                        title="Click to view profile"
+                      >
+                        {emp.name}
+                      </strong>
                     </td>
                     <td>{emp.email}</td>
                     <td>{emp.department}</td>
